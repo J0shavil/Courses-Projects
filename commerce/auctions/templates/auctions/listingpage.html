@@ -1,0 +1,115 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <!-- This line ensures that the watchlist appears if the user is not the one who created the listing or if the listing is not already in a giving user's watchlist -->
+        {% if listings.user != user and listings not in watchlist.listings.all %}
+       <table>
+        <form action="{% url 'watchlist' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" ><input name="watchlist_id" type="hidden" value="{{ listings.id }}">Add to Watchlist</button>
+            <!-- This line ensures that if a user is logged in and the listing is active and the list is inside of the user's watchlist -->
+            {% elif user != None and listings.status == True and listings in watchlist.listings.all  %}
+            <h6>This item is in your watchlist.</h6>
+            <table>
+                <tr>
+                    <td>
+                        <form action="{% url 'watchlistremove' %}" method="post">
+                            {% csrf_token %} 
+                            <button name="pagelisting" type="submit" value="{{ listings.id }}" >Remove from watchlist</button>
+                        </form>
+                    </td>
+                </tr>
+            </table>
+            {% endif %}
+            <!--This line ensures that only the user that created the listing can get the option to close the auction-->
+            {% if listings.user == user and listings.status == True %}
+            <form action="{% url 'auctionclose' %}" method="post">
+                {% csrf_token %}
+                <button type="submit" ><input name="listing" type="hidden" value="{{ listings.id }}">Close auction</button> 
+            </form>
+            {% endif %}
+        </form>
+        <!--This line ensures that only the user that made the highest bid, gets the message that he won the auction-->
+        {% if bids.winner_status == True and bids.user == user %}
+            <h2>You are the winner of this auction!</h2>
+        {% endif %}
+        <tr>
+    <table>
+            <tr>
+                <td><h1><strong>{{ listings.title }}</strong></h1></td>
+            <tr>
+                <!--The following lines determine if an image was provided by the user for the listing. If not, it will assign the default image-->
+                {% if listings.image != None %}
+                    <td><img src="{{ listings.image}}" style="width: 400px; height:auto;"></td>
+                {% else %}
+                    <td><img src="https://png.pngtree.com/png-vector/20190820/ourmid/pngtree-no-image-vector-illustration-isolated-png-image_1694547.jpg" style="width: 400px; height:auto;"></td>
+                {% endif %}
+            </tr>
+            <tr >
+                <td>About this product:</td>
+            </tr>
+            <tr style="width: auto; border: 1px solid grey; text-align: center;">
+                <td><strong>{{ listings.description}}</strong> </td>
+            </tr>
+            <tr>
+                <td><h5>Starting bid: ${{ listings.starting_bid}}</h5></td>
+            </tr>
+            <!-- If a bid already exists, display it if it's the highest --> 
+            {% if  listings.highest_bid != None %}
+            <tr>
+                <td><h4>Highest Bid: ${{ listings.highest_bid.bid_amount }}</h4></td>
+            </tr> 
+            {% else %}
+            <tr>
+                <td><h4>No bid received yet.</h4></td>
+            </tr> 
+            {% endif %}
+            <!--Ensure that the post bid option only appears to users who haven't created the current list and that the listing is still active-->
+            {% if listings.user != user and listings.status == True %}
+            <form action="{% url 'postbid' %}" method="post">
+                {% csrf_token %}
+                <tr>
+                    <td><input name="bid" type="number" placeholder="Bid" style="width: 100px;"> <button type="submit">Submit</button><p style="color: red;">{{ message }}</p><p style="color: rgb(47, 255, 116);">{{ bid_added }}</p></td>
+                    <input name="startingbid" type="hidden" value="{{ listings.starting_bid }}">
+                    <input name="listings_id" type="hidden" value="{{ listings.id }}">
+                    <input name="highest_bid" type="hidden" value="{{ listings.highest_bid.bid_amount }}">
+                </tr> 
+
+            </form>
+            {% endif %}
+            <!--Check if listing is false-->
+            {% if listings.status == False %}
+                <h1>This listing is no longer active.</h1>
+            {% endif %}
+            <form action="{% url 'comment' %}" method="POST">
+                {% csrf_token %}
+                <td><textarea type="text" name="comment" placeholder="Leave a comment!" style="width: 500px; height: 200px;"></textarea></td>
+                <!--Send the listing id with the Post request-->
+                <input type="hidden" name="listing" value="{{ listings.id }}">
+                <tr>
+                    <td><button type="submit">Submit</button></td>
+                </tr>
+                <tr>
+                    <td style="color: red;"> {{ comment_message }}</td>
+                </tr>
+            </form> 
+
+    </table>
+    <!--Show all comments for the specific listing-->
+    <h2>User Comments:</h2>
+    {% for comment in comments %}
+    <table style="width: 1000px; border-top: 1px solid black">
+        <tr>
+            <td>User: {{ comment.user }}</td>
+        </tr>
+        <tr>
+            <td> {{ comment.comment }}</td>
+        </tr>
+        <tr>
+            <td>Comment added on {{ comment.date }}</td>
+        </tr>
+
+    </table>
+    {% endfor %}
+    </div>
+{% endblock %}

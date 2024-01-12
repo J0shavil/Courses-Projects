@@ -1,0 +1,48 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h2>Active Listings</h2>
+    <h6>Filter by Category</h6>
+    <form action="{% url 'index' %}" method="post">
+        {% csrf_token %}
+        <select name="category">
+                <option selected value="None" >All</option>
+            {% for category in category_list %}
+                <option  value="{{ category.0 }}">{{ category.1 }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Submit</button>
+    </form> 
+    <div id="listing_container" >
+        {% for listing in listings %}
+        <a href="{% url 'listingpage' listing.id %}">
+            {% if listing.status != False %}
+            <table>
+                <tr>
+                    <td style="color: black; text-align: center;"><strong>{{ listing.title }}</strong> </td>
+                </tr>
+                <tr>
+                    {% if listing.image != None %}
+                        <td style="text-align: center;" ><img src="{{ listing.image }}" style="width: 300px; height: 200px;"></td>
+                    {% else %}
+                        <td><img src="https://png.pngtree.com/png-vector/20190820/ourmid/pngtree-no-image-vector-illustration-isolated-png-image_1694547.jpg" style="width: 300px; height: 200px;"></td>
+                    {% endif %}
+                </tr>
+                <tr>
+                    <td style="color: black;">{{ listing.description }}</td>
+                </tr>
+                <tr>
+                    <td> {{ listing.starting_bid }} $ </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h6>Created on {{ listing.date }}</h6>
+                    </td>
+                </tr>
+            </table>
+        </a>
+        {% endif %}
+        {% endfor %}
+        
+    </div>
+{% endblock %}
