@@ -1,0 +1,45 @@
+{% extends 'auctions/layout.html' %}
+
+{% block body %}
+
+<form action="{% url 'newlisting' %}" method="post">
+    {% csrf_token %}
+<table>
+    <tr>
+        <td><input type="text" name="title" placeholder="Title"></td>
+    </tr>
+    <tr>
+        <td style="color: red;">{{ message_title }}</td>
+    </tr>
+    <tr>
+        <td><textarea type="text" name="description" placeholder="Description" style="width: 500px; height: 400px;"></textarea></td>
+    </tr>
+    <tr>
+        <td> <select name="category">
+            <!-- Get all the category options inside of the Listings object -->
+            <option  selected value="None">Choose a category</option>
+            {% for category in categories %}
+                <option value="{{ category.0 }}">{{ category.1 }}</option>
+            {% endfor %}
+        </select></td>
+    </tr>
+    <tr>
+        <td style="color: red;">{{ message }}</td>
+    </tr>
+    <tr>
+        <td><input type="text" name="starting_bid" placeholder="Starting Bid">$</td>
+    </tr>
+    <tr>
+        <td style="color: red;">{{ message_bid }}</td>
+    </tr>  
+    <tr>
+        <td><input type="url" name="image" placeholder="Image Url"></td>
+    </tr>  
+    <tr>
+        <td><input type="submit"></td>
+    </tr>    
+</table>
+</form>
+
+
+{% endblock %}
