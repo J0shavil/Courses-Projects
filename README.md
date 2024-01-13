@@ -1,11 +1,3 @@
-# Courses-Projects
-Course Projects: A collection of coding projects completed during various courses, showcasing my skills and learning journey in different areas of programming.
+Wiki Project (CS50 Web Development with Python and Javascript)
 
-Welcome to my Courses-Projects repository.
-
-Each branch is a different project/problem I did/solved.
-
-List of branches:
-- Ecommerce (project)
-- Credit (problem)
-- Readability (problem)
+In this project I learned how to use django and created a wikipedia clone Where the user can create a new wiki page and search and check other pages in the directory.
