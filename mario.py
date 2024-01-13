@@ -1,5 +1,5 @@
 # TODO
-from cs50 import get_int
+#from cs50 import get_int
 
 
 def main():
@@ -14,11 +14,12 @@ def main():
 
 
 def get_size():
-    size = get_int("Height: ")
-    if size <= 0 or size >= 9:
+    height = int(input("Enter height: "))
+    
+    if height <= 0 or height >= 9:
         return get_size()
     else:
-        return size
+        return height
 
 
 def makeblock(num):

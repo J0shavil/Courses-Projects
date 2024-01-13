@@ -4,11 +4,10 @@ I decided to include this problem in my portfolio because, when I solved this pr
 
 Then later when I revisitted it with python it was clear how powerfull and intuitive this language can be.
 
-You'll have to import the following libraries: 
+You'll have to import the following librariy for C: 
 
 - Cs50 library for C: https://cs50.readthedocs.io/libraries/cs50/c/
-- Cs50 library for python: https://cs50.readthedocs.io/libraries/cs50/python/
 
-
+The python code you can run directly.
 
 Feel free to try the code yourself!
