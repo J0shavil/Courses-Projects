@@ -1,4 +1,4 @@
-Ecommerce website Project
+Ecommerce website Project (CS50's Web Programming with Python and JavaScript)
 
 This project was done in the CS50's WebDevelopment with Python and Javascript
 
