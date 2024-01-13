@@ -4,8 +4,8 @@ This problem was so fun! Created a wordle clone you can play in the terminal.
 
 Give it a try!
 
-Be sure to install Cs50 library:
+Be sure to install the Cs50 library as it's required to run this code:
 
-https://cs50.readthedocs.io/libraries/cs50/c/
+https://github.com/cs50/libcs50
 
 Usage: ./wordle wordsize
