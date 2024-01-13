@@ -1,11 +1,5 @@
-# Courses-Projects
-Course Projects: A collection of coding projects completed during various courses, showcasing my skills and learning journey in different areas of programming.
+Wordle problem (CS50x)
 
-Welcome to my Courses-Projects repository.
+This problem was so fun! Created a wordle clone you can play in the terminal.
 
-Each branch is a different project/problem I did/solved.
-
-List of branches:
-- Ecommerce (project)
-- Credit (problem)
-- Readability (problem)
+Give it a try!
