@@ -6,5 +6,6 @@ Welcome to my Courses-Projects repository.
 Each branch is a different project/problem I did/solved.
 
 List of branches:
-- Ecommerce
-- Credit
+- Ecommerce (project)
+- Credit (problem)
+- Readability (problem)
