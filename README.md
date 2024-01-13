@@ -1,11 +1,5 @@
-# Courses-Projects
-Course Projects: A collection of coding projects completed during various courses, showcasing my skills and learning journey in different areas of programming.
+Runoff Problem (CS50x)
 
-Welcome to my Courses-Projects repository.
+This was one of the most challenging problems of the course, but the more challenging something is, the more you learn while solving it.
 
-Each branch is a different project/problem I did/solved.
-
-List of branches:
-- Ecommerce (project)
-- Credit (problem)
-- Readability (problem)
+This program simulates a runoff election in which a voter gets to set ranks for their candidates. The program then checks has the most preference over the other candidates to determine the winner.
