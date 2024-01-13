@@ -8,4 +8,10 @@ Each branch is a different project/problem I did/solved.
 List of branches:
 - Ecommerce (project)
 - Credit (problem)
+- Mario
 - Readability (problem)
+- Runoff
+- Wiki
+- Wordle
+
+
