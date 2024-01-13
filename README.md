@@ -1,11 +1,14 @@
-# Courses-Projects
-Course Projects: A collection of coding projects completed during various courses, showcasing my skills and learning journey in different areas of programming.
+Mario problem (Cs50x)
 
-Welcome to my Courses-Projects repository.
+I decided to include this problem in my portfolio because, when I solved this problem using C, that's when I realized I love programming. That sense of acomplishment when I saw those "#" forming the pyramid within the specs demanded, was amazing.
 
-Each branch is a different project/problem I did/solved.
+Then later when I revisitted it with python it was clear how powerfull and intuitive this language can be.
 
-List of branches:
-- Ecommerce (project)
-- Credit (problem)
-- Readability (problem)
+You'll have to import the following libraries: 
+
+- Cs50 library for C: https://cs50.readthedocs.io/libraries/cs50/c/
+- Cs50 library for python: https://cs50.readthedocs.io/libraries/cs50/python/
+
+
+
+Feel free to try the code yourself!
