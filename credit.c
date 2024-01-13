@@ -20,8 +20,8 @@ bool AMEXLENGTH = false;
 bool VISALENGTH = false;
 bool MCLENGTH = false;
 
-int main(void)
-{
+int main(void){
+    
     creditNum = get_long("Number: ");
 
     do
@@ -148,3 +148,4 @@ int main(void)
     {
         printf("INVALID\n");
     }
+}
